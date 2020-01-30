@@ -20,6 +20,7 @@ int main()
     cout << "Enter the length of the room: ";
     cin >> room_length;
 
+    // Display calculation based on user input
     cout << "The area of the room is "
          << room_width * room_length << " square feet.";
 
