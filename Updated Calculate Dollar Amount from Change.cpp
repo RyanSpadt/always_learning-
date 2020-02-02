@@ -41,7 +41,7 @@ int main()
     * Variable Declarations for the value of the Coins
     * Floats used because precision needed is only 2
     */
-    float quarter_value = 0.25, dime_value = 0.10,
+    const float quarter_value = 0.25, dime_value = 0.10,
         nickel_value = 0.05, penny_value = 0.01;
 
     // Variable to hold the collective total of the coins
