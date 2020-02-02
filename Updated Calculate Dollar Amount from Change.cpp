@@ -37,18 +37,21 @@ int main()
     cout << "Pennies: ", cin >> input_pennies;
 
 
-    // Variable Declarations for the value of the Coins
-    double quarter_value = 0.25, dime_value = 0.10,
+    /*
+    * Variable Declarations for the value of the Coins
+    * Floats used because precision needed is only 2
+    */
+    float quarter_value = 0.25, dime_value = 0.10,
         nickel_value = 0.05, penny_value = 0.01;
 
     // Variable to hold the collective total of the coins
-    double collective_value;
+    float collective_value;
 
     // Program takes the inputs of the users and collectively adds them to a total amount
-    collective_value = (static_cast<double>(input_quarters) * quarter_value);
-    collective_value += (static_cast<double>(input_dimes) * dime_value);
-    collective_value += (static_cast<double>(input_nickels) * nickel_value);
-    collective_value += (static_cast<double>(input_pennies) * penny_value);
+    collective_value = (static_cast<float>(input_quarters) * quarter_value);
+    collective_value += (static_cast<float>(input_dimes) * dime_value);
+    collective_value += (static_cast<float>(input_nickels) * nickel_value);
+    collective_value += (static_cast<float>(input_pennies) * penny_value);
 
 
     // Program sets decimal point fixed to 2
