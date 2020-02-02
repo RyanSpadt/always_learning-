@@ -46,9 +46,9 @@ int main()
 
     // Program takes the inputs of the users and collectively adds them to a total amount
     collective_value = (static_cast<double>(input_quarters) * quarter_value);
-    collective_value += (static_cast<double>(input_dimes)* dime_value);
-    collective_value += (static_cast<double>(input_nickels)* nickel_value);
-    collective_value += (static_cast<double>(input_pennies)* penny_value);
+    collective_value += (static_cast<double>(input_dimes) * dime_value);
+    collective_value += (static_cast<double>(input_nickels) * nickel_value);
+    collective_value += (static_cast<double>(input_pennies) * penny_value);
 
 
     // Program sets decimal point fixed to 2
