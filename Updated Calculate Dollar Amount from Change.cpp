@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-using namespace std;
+using namespace std::cout, std::cin, std::endl;
 
 int main()
 {
