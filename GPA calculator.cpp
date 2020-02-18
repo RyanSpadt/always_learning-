@@ -40,7 +40,6 @@ int main()
 
 void getInput(string grade_input, float credit_input, int class_amount)
 {
-
 	// Gets user input and inserts value input into the back of the appropriate vector
 	cout << "\nPlease enter how many classes you wish to calculate for: ", cin >> class_amount;
 
