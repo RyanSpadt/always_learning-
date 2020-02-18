@@ -18,7 +18,6 @@ vector <float> credits;
 
 int main()
 {
-
 	string grade_input;
 	float credit_input{ 0.00f };
 	int class_amount{ 0 };
