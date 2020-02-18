@@ -59,7 +59,7 @@ void getInput(string grade_input, float credit_input, int class_amount)
 float calculateGPA()
 {
 	float grade_point{ 0.00f }, gpa{ 0.00f }, credit_hours{0.00f}, quality_point{ 0.00f };
-	string possible_grades[9]{ "A","A-","B+","B","B-","C+","C","C-","F" };
+	string possible_grades[9] { "A","A-","B+","B","B-","C+","C","C-","F" };
 	float possible_quality_points [9] {4.00f, 3.70f, 3.33f, 3.00f, 2.70f, 2.30f, 2.00f, 1.70f, 0.00f};
 	int x{ 0 };
 
