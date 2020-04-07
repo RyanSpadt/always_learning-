@@ -35,7 +35,7 @@ int main()
 	cout << endl;
 	type_text("This program will ask you for the current price and previous price of an item, and give you it's inflation."); // Description of what the program will do for the user
 	cout << endl;
-    system("pause"); // Pause wait for user to press any button.
+    	system("pause"); // Pause wait for user to press any button.
 
 	// Function calls
 	getInput(price_item_curr, price_item_prev); 
