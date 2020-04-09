@@ -2,6 +2,7 @@
 * Ryan Spadt for Computer Science 1
 * Meeting time: 10AM-11:50AM MW
 * Insutrctor: Ann Richards
+* Assignment 5 due on 04/12/20
 */
 
 /*
@@ -20,118 +21,135 @@
 using namespace std;
 
 // Function prototypes
-void type_text(const string&);
-void getInput(float&, float&);
-void calculateInflation(float, float, float&);
-void output(float&);
+void getInput(float&, float&, float&);
+void calculateInflation(float, float, float, float&, float&);
+void output(float, float);
 
+// Main function
 int main()
 {
-
 	// Variable Declarations
-	float price_item_curr{ 0.00f }, price_item_prev{ 0.00f }, inflation{ 0.00f };
-
-	type_text("Welcome to the inflation calculator program."); // Welcoming message
-	cout << endl;
-	type_text("This program will ask you for the current price and previous price of an item, and give you it's inflation."); // Description of what the program will do for the user
-	cout << endl;
-    	system("pause"); // Pause wait for user to press any button.
+	float price_item_curr{ 0.00f }, price_item_one{ 0.00f }, price_item_two{ 0.00f }, inflation_01{ 0.00f }, inflation_12;
 
 	// Function calls
-	getInput(price_item_curr, price_item_prev); 
-	calculateInflation(price_item_curr, price_item_prev, inflation);
-	output(inflation);
+	getInput(price_item_curr, price_item_one, price_item_two);
+	calculateInflation(price_item_curr, price_item_one, price_item_two, inflation_01, inflation_12);
+	output(inflation_01, inflation_12);
 
-    return 0;
+	return 0;
 }
 
 // Function to get input from user
-void getInput(float& price_item_curr, float& price_item_prev)
+void getInput(float& price_item_curr, float& price_item_one, float& price_item_two)
 {
-
+	cout << "Welcome to the inflation calculator program." << endl; // Welcoming message
+	cout << "This program will ask you for the current price and previous price of an item, and give you it's inflation." << endl; // Description of what the program will do for the user
+	system("pause"); // Pause wait for user to press any button.
 	system("CLS"); // Clear console
 
-	// Looping for error check
-	for (;;)
+	for (;;) // Looping for error check, current price
 	{
-		type_text("Please enter the current price of an item: "); // Price for first item
+		cout << "Please enter the current price of an item: ";
 
-		if (cin >> price_item_curr)
-			break;
-		else
+		cin >> price_item_curr;
+
+		if (cin.fail()) // No extraction took place
 		{
-			cout << "Please enter a valid integer" << endl;
+			cout << "Please enter a valid price." << endl;
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue; // Try again
 		}
+		if (price_item_curr <= 0) // Check if value is less than or equal to 0, if it is try again.
+		{
+			cout << "Price must be greater than 0." << endl;
+			continue; // Try again
+		}
+		
+		break;
 	}
 
 	cout << endl;
-	for (;;)
+	for (;;) // Looping for price one year ago variable, in separate loops, to not have the disadvantage of starting over if the user has fat fingers and mis-types on the second input
 	{
-		type_text("Please enter the price of the item two years ago: ");
+		cout << "Please enter the price of the item one year ago: ";
 
-		if (cin >> price_item_prev)
-			break;
-		else
+		cin >> price_item_one;
+
+		if (cin.fail()) // No extraction took place
 		{
 			cout << "Please enter a valid integer" << endl;
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue; // Try again
+		}	
+		if (price_item_one <= 0) // Check if value is less than or equal to 0, if it is try again.
+		{
+			cout << "Price must be greater than 0." << endl;
+			continue; // Try again
 		}
+
+		break;
+	}
+
+	cout << endl;
+	for (;;) // Looping for price two years ago variable, in separate loops, to not have the disadvantage of starting over if the user has fat fingers and mis-types on the second or third input
+	{
+		cout << "Please enter the price of the item two years ago: ";
+
+		cin >> price_item_two;
+
+		if (cin.fail()) // No extraction took place
+		{
+			cout << "Please enter a valid integer" << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue; // Try again
+		}
+		if (price_item_two <= 0) // Check if value is less than or equal to 0, if it is try again.
+		{
+			cout << "Price must be greater than 0." << endl;
+			continue; // Try again
+		}
+
+		break;
 	}
 
 	system("CLS");
-	type_text("Thank you.. You have entered."); // Confirming user input
-	cout << endl;
-	type_text("Current price of item: ");
-	cout << price_item_curr << endl;
-	type_text("Price of item two years ago: ");
-	cout << price_item_prev << endl;
+
+	cout << "Thank you.. You have entered." << endl;
+	cout << "Current price of item: " << price_item_curr << endl;
+	cout << "Price of item one year ago: " << price_item_one << endl;
+	cout << "Price of item two years ago: " << price_item_two << endl;
 }
 
-void calculateInflation(float price_item_curr, float price_item_prev, float& inflation)
+// Calculates inflation to get our desired results
+void calculateInflation(float price_item_curr, float price_item_one, float price_item_two, float& inflation_01, float& inflation_12)
 {
-
-	inflation = (price_item_curr - price_item_prev) / price_item_prev * 100.00; // Calculate inflation percentage
-
+	inflation_01 = (price_item_curr - price_item_one) / price_item_one * 100.00; // Calculate inflation percentage, from one year ago to current.
+	inflation_12 = (price_item_one - price_item_two) / price_item_two * 100.00; // Calculate inflation percentage, from two years ago to one year ago.
 }
 
-void output(float& inflation)
+// Displays to the user the results
+void output(float inflation_01, float inflation_12)
 {
 	cout.setf(ios::fixed); // Set precision for decimal points to two
 	cout.precision(2);
 	cout << endl;
 
-	// Determine what output to send out.
-	if (inflation > 0)
-	{
-		type_text("Based on your input, the item is inflating. It has inflated by ");
-		cout << inflation << "%";
-	}
-	else if (inflation < 0)
-	{
-		type_text("Based on your input, this item is deflating. It has deflated by ");
-		cout << inflation << "%";
-	}
+	if (inflation_12 > 0) // Checking what to output for the inflation/deflation from two years ago to one year ago.
+		cout << "From two years ago to one year ago, this product inflated by " << inflation_12 << "%" << endl;
+	else if (inflation_12 < 0)
+		cout << "From two years ago to one year ago, this product deflated by " << inflation_12 << "%" << endl;
 	else
-		type_text("Based on your input, this item is not inflating or deflating.");
+		cout << "From two years ago to one year ago, this product has not changed in price." << endl;
 
-	cout << endl << endl;
-	type_text("Thank you for using the inflation calculator program.");
-}
+	if (inflation_01 > 0) // Checking what to output for the inflation/deflation from one year ago to current.
+		cout << "From one year ago to current, this product has inflated by " << inflation_01 << "%" << endl;
+	else if (inflation_01 < 0)
+		cout << "From one year ago to current, this product has deflated by " << inflation_01 << "%" << endl;
+	else
+		cout << "From one year ago to current, this product has not changed in price." << endl;
 
-// Function to output as if it was being typed
-void type_text(const string& text)
-{
-	// Loop through each character in the text
-	for (size_t i = 0; i < text.size(); ++i)
-	{
-		// Output one character
-		// Flush to make sure the output is not delayed
-		cout << text[i] << flush;
-
-		// Sleep 60 milliseconds
-		Sleep(60);
-	}
+	cout << endl << endl << "Thank you for using the inflation calculator program" << endl;
 }
