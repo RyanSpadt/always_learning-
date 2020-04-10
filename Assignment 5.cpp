@@ -29,7 +29,7 @@ void output(float, float);
 int main()
 {
 	// Variable Declarations
-	float price_item_curr{ 0.00f }, price_item_one{ 0.00f }, price_item_two{ 0.00f }, inflation_01{ 0.00f }, inflation_12;
+	float price_item_curr{ 0.00f }, price_item_one{ 0.00f }, price_item_two{ 0.00f }, inflation_01{ 0.00f }, inflation_12{ 0.00f };
 
 	// Function calls
 	getInput(price_item_curr, price_item_one, price_item_two);
