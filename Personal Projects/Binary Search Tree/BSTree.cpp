@@ -2,7 +2,8 @@
 
 // Finds a node in a given subtree. Returns true/false to indicate if
 //	node with given string is in the subtree.
-bool BSTree::find(const string& s, node* p) const {
+bool BSTree::find(const string& s, node* p) const 
+{
 	// Given: p is a pointer to an existing node
 	if (s == p->data)
 		return true;
@@ -12,7 +13,8 @@ bool BSTree::find(const string& s, node* p) const {
 }
 
 // Inserts a new node into the subtree at the given pointer.
-void BSTree::insert(const string& s, node* p) {
+void BSTree::insert(const string& s, node* p) 
+{
 	// Given: p is a pointer to an existing node (root of a subtree)
 	if (s < p->data) { // Insert into left subtree
 		if (p->left) // Left subtree exists
@@ -34,7 +36,8 @@ void BSTree::insert(const string& s, node* p) {
 
 // Performs an inorder traversal of the subtree at node p. For each node
 	//	prints the string stored at that node.
-void BSTree::print_inorder(node* p) const {
+void BSTree::print_inorder(node* p) const 
+{
 	// Print all values in subtree, in order
 	if (p) {
 		print_inorder(p->left);
@@ -46,7 +49,8 @@ void BSTree::print_inorder(node* p) const {
 // Perform a preorder traversal of the subtree at node p, also given the
 //	depth at node p. For each node, prints the string stored at the node
 //	with prefix showing the depth.
-void BSTree::print_preorder(node* p, size_t depth) const {
+void BSTree::print_preorder(node* p, size_t depth) const 
+{
 	if (p) {
 		for (size_t i = 0; i < depth; i++)
 			cout << '-';
@@ -58,13 +62,15 @@ void BSTree::print_preorder(node* p, size_t depth) const {
 
 // Find a string in the tree. Returns true/false to indicate if the given
 	//	string is in the tree.
-bool BSTree::find(const string& s) const {
+bool BSTree::find(const string& s) const 
+{
 	return root && find(s, root);
 }
 
 // Inserts a string into the tree. If the string already exists in the
 //	tree, does nothing.
-void BSTree::insert(const string& s) {
+void BSTree::insert(const string& s) 
+{
 	// Is tree empty?
 	if (!root) {
 		root = new node;
