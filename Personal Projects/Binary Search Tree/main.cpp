@@ -18,7 +18,8 @@ int main()
 	cout << "When finished, press ENTER.\n\n";
 	cout << "> ";
 	getline(cin, s);
-	while (s.size()) {
+	while (s.size()) 
+	{
 		tree.insert(s);
 		cout << "> ";
 		getline(cin, s);
